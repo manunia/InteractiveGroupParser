@@ -80,6 +80,14 @@ public class SeleniumHandler {
         );
     }
 
+    public void setTextToElement(String xpath, String text) {
+        getElem(xpath).sendKeys(text);
+    }
+
+    public void pressEnter() {
+
+    }
+
     public void waitSomeTime(int milliSec) {
         try {
             Thread.sleep(milliSec);

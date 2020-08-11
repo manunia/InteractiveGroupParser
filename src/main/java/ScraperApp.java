@@ -34,11 +34,22 @@ public class ScraperApp {
             setAdress(ADRESS);
             setTheme(THEME);
             setLetterBody(result.toString());
+            sendLetter();
 
-
-            //handler.stop();
+            handler.waitSomeTime(10000);
+            
+            handler.stop();
         }
 
+    }
+
+    private void sendLetter() {
+        try {
+            handler.click(handler.getElem(ElemsPaths.SEND_BUTTON));
+            System.out.println("Письмо отправлено");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void setLetterBody(String s) {

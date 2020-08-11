@@ -1,10 +1,10 @@
 import config.SeleniumHandler;
-import model.Mail;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.AutoQALogin;
 import pages.AutoQAMailPage;
-import scraper.ElemsPaths;
 
 public class TestLoginAndSendLetter {
 
@@ -18,6 +18,9 @@ public class TestLoginAndSendLetter {
     AutoQALogin qaLogin;
     AutoQAMailPage qaMailPage;
 
+    @Description("Login and create letter")
+    @Story("Enter login and password? create and send letter")
+    @Test
     private void startGrawling() {
         if(handler.start(false,true)) {
             qaLogin = new AutoQALogin(handler);
@@ -26,6 +29,8 @@ public class TestLoginAndSendLetter {
             qaLogin.loginToAutoQA(BASE_URL,TEST_GMAIL_COM,TEST_PASSWORD);
 
             qaMailPage.createAndSendQALetter(ADRESS,THEME);
+
+            Assert.assertTrue(true,ADRESS);
 
             handler.waitSomeTime(10000);
             handler.stop();

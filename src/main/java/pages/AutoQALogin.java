@@ -1,7 +1,9 @@
 package pages;
 
 import config.SeleniumHandler;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+import org.testng.annotations.Parameters;
 import scraper.ElemsPaths;
 
 public class AutoQALogin {
@@ -12,6 +14,7 @@ public class AutoQALogin {
         this.handler = handler;
     }
 
+    @Step("Enter login")
     private void setLogin(String login) {
         try {
             handler.setTextToElement(ElemsPaths.LOGIN_FIELD, login + Keys.ENTER);
@@ -20,6 +23,7 @@ public class AutoQALogin {
         }
     }
 
+    @Step("Enter password")
     private void setPassword(String password) {
         try {
             handler.setTextToElement(ElemsPaths.PASSWORD_FIELD, password + Keys.ENTER);
@@ -28,6 +32,8 @@ public class AutoQALogin {
         }
     }
 
+    @Parameters({ "url" })
+    @Step("Get start")
     public void loginToAutoQA(String url, String login, String password) {
         handler.openPage(url);
         System.out.println("open page: " + url);

@@ -1,6 +1,7 @@
 package pages;
 
 import config.SeleniumHandler;
+import io.qameta.allure.Step;
 import model.Mail;
 import org.openqa.selenium.WebElement;
 import scraper.ElemsPaths;
@@ -13,6 +14,7 @@ public class AutoQAMailPage {
         this.handler = handler;
     }
 
+    @Step("Count incoming letters")
     public String getResultFromIncomingLetters() {
         WebElement mail = handler.getElem(ElemsPaths.INCOMING_LETTERS);
         Mail result = getElementIncomingLetters(mail);
@@ -27,6 +29,7 @@ public class AutoQAMailPage {
         return mailObj;
     }
 
+    @Step("Letter sending")
     private void sendLetter() {
         try {
             handler.click(handler.getElem(ElemsPaths.SEND_BUTTON));
@@ -36,6 +39,7 @@ public class AutoQAMailPage {
         }
     }
 
+    @Step("Print letter body")
     private void setLetterBody(String s) {
         try {
             handler.setTextToElement(ElemsPaths.LETTER_BODY, s);
@@ -44,6 +48,7 @@ public class AutoQAMailPage {
         }
     }
 
+    @Step("Enter theme")
     private void setTheme(String theme) {
         try {
             handler.setTextToElement(ElemsPaths.THEME_FIELD, theme);
@@ -52,6 +57,7 @@ public class AutoQAMailPage {
         }
     }
 
+    @Step("Enter adress")
     private void setAdress(String adress) {
         try {
             handler.setTextToElement(ElemsPaths.ADRESS_FIELD, adress);
@@ -60,6 +66,7 @@ public class AutoQAMailPage {
         }
     }
 
+    @Step("Press New letter button")
     private void createNewLetter() {
         try {
             handler.click(handler.getElem(ElemsPaths.NEW_LETTER));

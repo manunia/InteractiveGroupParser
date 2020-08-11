@@ -1,5 +1,7 @@
 import config.SeleniumHandler;
+import model.Mail;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import scraper.ElemsPaths;
 
 public class ScraperApp {
@@ -10,20 +12,24 @@ public class ScraperApp {
 
     private SeleniumHandler handler = new SeleniumHandler();
 
-    public int letters;
-
     private void startGrawling() {
         if(handler.start(false,true)) {
             handler.openPage(BASE_URL);
             System.out.println("open page: " + BASE_URL);
 
             setLogin();
-            handler.waitSomeTime(2000);
-            setPassword();
             handler.waitSomeTime(5000);
-            getLetters();
+            setPassword();
 
+            handler.waitSomeTime(10000);
 
+            WebElement mail = handler.getElem(ElemsPaths.INCOMING_LETTERS);
+            Mail result = parseMail(mail);
+            System.out.println(result.toString());
+
+            createNewLetter();
+
+            //handler.stop();
         }
 
     }
@@ -44,14 +50,21 @@ public class ScraperApp {
         }
     }
 
-    private void getLetters() {
+    private Mail parseMail(WebElement mail) {
+        Mail mailObj = new Mail();
+
+        mailObj.setCountLetters(handler.getChildElemText(ElemsPaths.LETTERS,mail));
+        return mailObj;
+    }
+
+    private void createNewLetter() {
         try {
-            letters = Integer.parseInt(handler.getElem(ElemsPaths.LETTERS).getText());
-            System.out.println(letters);
+            handler.click(handler.getElem(ElemsPaths.NEW_LETTER));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 
     public static void main(String[] args) {
         ScraperApp scraperApp = new ScraperApp();

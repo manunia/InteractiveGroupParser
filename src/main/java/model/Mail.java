@@ -7,9 +7,21 @@ import lombok.Setter;
 @Setter
 public class Mail {
 
-    private String mail;
-    private String url;
-    private String login;
-    private String password;
     private int countLetters;
+
+    public void setCountLetters(String childElemText) {
+        try {
+            countLetters = Integer.parseInt(childElemText);
+        } catch (Exception e) {
+            System.out.println("Error parsing count of letters " + e.getMessage());
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Mail{" +
+                "Количество входящих писем: " + countLetters +
+                '}';
+    }
 }

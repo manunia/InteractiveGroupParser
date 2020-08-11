@@ -1,6 +1,8 @@
 package config;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class CromeConfig {
 
@@ -20,5 +22,11 @@ public class CromeConfig {
             options.addArguments("--headless");
         }
         return options;
+    }
+
+    public static DesiredCapabilities getDesiredCapabilities(boolean headlessMode) {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, getChromeOptions(headlessMode));
+        return capabilities;
     }
 }

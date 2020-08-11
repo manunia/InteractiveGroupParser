@@ -9,6 +9,8 @@ public class ScraperApp {
     private static final String BASE_URL = "https://www.gmail.com/";
     private static final String TEST_GMAIL_COM = "100820.test@gmail.com";
     private static final String TEST_PASSWORD = "#EDC4rfv";
+    private static final String ADRESS = "timoshenkomaria@mail.ru";
+    private static final String THEME = "Тестовое задание. Лупандина";
 
     private SeleniumHandler handler = new SeleniumHandler();
 
@@ -29,9 +31,38 @@ public class ScraperApp {
 
             createNewLetter();
 
+            setAdress(ADRESS);
+            setTheme(THEME);
+            setLetterBody(result.toString());
+
+
             //handler.stop();
         }
 
+    }
+
+    private void setLetterBody(String s) {
+        try {
+            handler.setTextToElement(ElemsPaths.LETTER_BODY, s);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void setTheme(String theme) {
+        try {
+            handler.setTextToElement(ElemsPaths.THEME_FIELD, theme);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void setAdress(String adress) {
+        try {
+            handler.setTextToElement(ElemsPaths.ADRESS_FIELD, adress);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void setLogin() {

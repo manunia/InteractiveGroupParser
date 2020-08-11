@@ -20,8 +20,6 @@ public class Mail {
 
     @Override
     public String toString() {
-        return "Mail{" +
-                "Количество входящих писем: " + countLetters +
-                '}';
+        return "Количество входящих писем: " + countLetters;
     }
 }

@@ -37,7 +37,7 @@ public class ScraperApp {
             sendLetter();
 
             handler.waitSomeTime(10000);
-            
+
             handler.stop();
         }
 

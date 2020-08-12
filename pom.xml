@@ -12,6 +12,7 @@
         <jre.level>1.8</jre.level>
         <jdk.level>1.8</jdk.level>
         <aspectj.version>1.9.2</aspectj.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>

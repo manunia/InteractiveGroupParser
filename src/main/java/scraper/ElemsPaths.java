@@ -5,7 +5,7 @@ public class ElemsPaths {
     public static final String LOGIN_FIELD = "//*[@id=\"identifierId\"]";
     public static final String PASSWORD_FIELD = "//*[@id=\"password\"]/div[1]/div/div[1]/input";
 
-    public static final String INCOMING_LETTERS = "//*[@id=\":4c\"]/div";
+    public static final String INCOMING_LETTERS = "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div/div/div/div[2]/div/div/div[1]/div[1]/div/div[1]/div";
     public static final String LETTERS = "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div/div/div/div[2]/div/div/div[1]/div[1]/div/div[1]/div/div/div[2]/div";
 
     public static final String NEW_LETTER = "/html/body/div[7]/div[3]/div/div[2]/div[1]/div[1]/div[1]/div/div/div/div[1]/div/div";

@@ -40,48 +40,27 @@ public class AutoQAMailPage {
 
     @Step("Letter sending")
     private void sendLetter() {
-        try {
-            handler.click(handler.getElem(SEND_BUTTON));
-            System.out.println("Письмо отправлено");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.click(handler.getElem(SEND_BUTTON));
     }
 
     @Step("Print letter body")
     private void setLetterBody(String s) {
-        try {
-            handler.setTextToElement(LETTER_BODY, s);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.setTextToElement(LETTER_BODY, s);
     }
 
     @Step("Enter theme")
     private void setTheme(String theme) {
-        try {
-            handler.setTextToElement(THEME_FIELD, theme);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.setTextToElement(THEME_FIELD, theme);
     }
 
     @Step("Enter adress")
     private void setAdress(String adress) {
-        try {
-            handler.setTextToElement(ADRESS_FIELD, adress);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.setTextToElement(ADRESS_FIELD, adress);
     }
 
     @Step("Press New letter button")
     private void createNewLetter() {
-        try {
-            handler.click(handler.getElem(NEW_LETTER));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.click(handler.getElem(NEW_LETTER));
     }
 
     public void createAndSendQALetter(String adress, String theme) {
@@ -91,7 +70,5 @@ public class AutoQAMailPage {
         setTheme(theme);
         setLetterBody(letterBody);
         sendLetter();
-        handler.waitSomeTime(10000);
-
     }
 }

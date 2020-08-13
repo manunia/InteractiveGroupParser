@@ -17,7 +17,7 @@ import java.net.URL;
 public class SeleniumHandler {
 
     private static final String SELENIUM_SERVER_URL = "http://localhost:4444/wd/hub";
-    private static final int WAIT_TIME_MAX = 6;
+    private static final int WAIT_TIME_MAX = 10;
 
     private WebDriver driver;
     private Wait<WebDriver> wait;

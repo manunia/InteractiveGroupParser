@@ -19,31 +19,19 @@ public class AutoQALoginPage {
     @Parameters({"login"})
     @Step("Enter login")
     private void setLogin(String login) {
-        try {
-            handler.setTextToElement(LOGIN_FIELD, login + Keys.ENTER);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.setTextToElement(LOGIN_FIELD, login + Keys.ENTER);
     }
 
     @Parameters({"password"})
     @Step("Enter password")
     private void setPassword(String password) {
-        try {
-            handler.setTextToElement(PASSWORD_FIELD, password + Keys.ENTER);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        handler.setTextToElement(PASSWORD_FIELD, password + Keys.ENTER);
     }
 
     @Parameters({ "url" })
     @Step("Get start")
     public void loginToAutoQA(String login, String password) {
-        //handler.openPage(url);
-        //System.out.println("open page: " + url);
         this.setLogin(login);
-        handler.waitSomeTime(5000);
         this.setPassword(password);
-        handler.waitSomeTime(10000);
     }
 }

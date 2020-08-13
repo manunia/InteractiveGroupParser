@@ -5,17 +5,18 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Parameters;
 
-public class AutoQALogin {
+public class AutoQALoginPage {
 
     public static final String LOGIN_FIELD = "//*[@id='identifierId']";
     public static final String PASSWORD_FIELD = "//*[@id='password']/div[1]/div/div[1]/input";
 
     private SeleniumHandler handler;
 
-    public AutoQALogin(SeleniumHandler handler) {
+    public AutoQALoginPage(SeleniumHandler handler) {
         this.handler = handler;
     }
 
+    @Parameters({"login"})
     @Step("Enter login")
     private void setLogin(String login) {
         try {
@@ -25,6 +26,7 @@ public class AutoQALogin {
         }
     }
 
+    @Parameters({"password"})
     @Step("Enter password")
     private void setPassword(String password) {
         try {
@@ -36,9 +38,9 @@ public class AutoQALogin {
 
     @Parameters({ "url" })
     @Step("Get start")
-    public void loginToAutoQA(String url, String login, String password) {
-        handler.openPage(url);
-        System.out.println("open page: " + url);
+    public void loginToAutoQA(String login, String password) {
+        //handler.openPage(url);
+        //System.out.println("open page: " + url);
         this.setLogin(login);
         handler.waitSomeTime(5000);
         this.setPassword(password);

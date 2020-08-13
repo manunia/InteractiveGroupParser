@@ -4,6 +4,7 @@ import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import model.Mail;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.Parameters;
 
 public class AutoQAMailPage {
 
@@ -23,6 +24,7 @@ public class AutoQAMailPage {
         this.handler = handler;
     }
 
+    @Parameters({"result"})
     @Step("Count incoming letters")
     public String getResultFromIncomingLetters() {
         WebElement mail = handler.getElem(INCOMING_LETTERS);
@@ -33,7 +35,6 @@ public class AutoQAMailPage {
 
     private Mail getElementIncomingLetters(WebElement mail) {
         Mail mailObj = new Mail();
-
         mailObj.setCountLetters(handler.getChildElemText(LETTERS, mail));
         return mailObj;
     }

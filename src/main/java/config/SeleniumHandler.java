@@ -12,12 +12,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 
 public class SeleniumHandler {
 
     private static final String SELENIUM_SERVER_URL = "http://localhost:4444/wd/hub";
-    private static final int WAIT_TIME_MAX = 10;
+    private static final int WAIT_TIME_MAX = 6;
 
     private WebDriver driver;
     private Wait<WebDriver> wait;
@@ -25,6 +26,7 @@ public class SeleniumHandler {
     public boolean start(boolean headlessMode, boolean needRemote) {
         try {
             driver = needRemote ? getRemoteDriver(headlessMode) : getChromeDriver(headlessMode);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             wait = new WebDriverWait(driver,WAIT_TIME_MAX);
         }catch (Exception e) {
             System.out.println("Error: driver was not initialized " + e.getMessage());
@@ -59,9 +61,7 @@ public class SeleniumHandler {
     }
 
     public WebElement getChildElem(String xpath, WebElement parentElement) {
-        return wait.until(
-                ExpectedConditions.presenceOfNestedElementLocatedBy(parentElement,By.xpath(xpath))
-        );
+        return wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(parentElement,By.xpath(xpath)));
     }
 
     public String getChildElemText(String xpath, WebElement parentElement) {
@@ -74,26 +74,11 @@ public class SeleniumHandler {
     }
 
     public void click(WebElement webElement) {
-        ((JavascriptExecutor) driver).executeScript(
-                "arguments[0].scrollIntoView(true);arguments[0].click()",
-                webElement
-        );
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);arguments[0].click()", webElement);
     }
 
     public void setTextToElement(String xpath, String text) {
         getElem(xpath).sendKeys(text);
-    }
-
-    public void pressEnter() {
-
-    }
-
-    public void waitSomeTime(int milliSec) {
-        try {
-            Thread.sleep(milliSec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void stop() {
@@ -101,6 +86,4 @@ public class SeleniumHandler {
             driver.quit();
         }
     }
-
-
 }

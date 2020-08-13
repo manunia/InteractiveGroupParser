@@ -28,7 +28,7 @@ public class AutoQALoginPage {
         handler.setTextToElement(PASSWORD_FIELD, password + Keys.ENTER);
     }
 
-    @Parameters({ "url" })
+    @Parameters({"url"})
     @Step("Get start")
     public void loginToAutoQA(String login, String password) {
         this.setLogin(login);

@@ -35,8 +35,6 @@ public class TestLoginAndSendLetter {
     @Test
     private void login() {
         qaLogin.loginToAutoQA(TEST_GMAIL_COM,TEST_PASSWORD);
-        //т.к. почтовая страница долго загружается, необходимо дополнительное время ожидания, иначе тест проваливается
-        handler.waitSomeTime(10000);
     }
 
     @Description("create letter")

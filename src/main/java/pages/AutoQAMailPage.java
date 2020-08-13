@@ -4,9 +4,18 @@ import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import model.Mail;
 import org.openqa.selenium.WebElement;
-import scraper.ElemsPaths;
 
 public class AutoQAMailPage {
+
+    public static final String INCOMING_LETTERS = "//*[@data-tooltip='Входящие']";
+    public static final String LETTERS = "//*[@class='bsU']";//т.к. мы находим дочерний элемент из блока входящих, то можно искать по классу
+
+    public static final String NEW_LETTER = "//*[@class='aic']/div/div";
+
+    public static final String ADRESS_FIELD = "//*[@name='to']";
+    public static final String THEME_FIELD = "//*[@name='subjectbox']";
+    public static final String LETTER_BODY = "//*[@class='Ar Au']/div[@aria-label='Тело письма']";
+    public static final String SEND_BUTTON = "//*[@class='dC']/div";
 
     private SeleniumHandler handler;
 
@@ -16,7 +25,7 @@ public class AutoQAMailPage {
 
     @Step("Count incoming letters")
     public String getResultFromIncomingLetters() {
-        WebElement mail = handler.getElem(ElemsPaths.INCOMING_LETTERS);
+        WebElement mail = handler.getElem(INCOMING_LETTERS);
         Mail result = getElementIncomingLetters(mail);
         System.out.println(result.toString());
         return result.toString();
@@ -25,14 +34,14 @@ public class AutoQAMailPage {
     private Mail getElementIncomingLetters(WebElement mail) {
         Mail mailObj = new Mail();
 
-        mailObj.setCountLetters(handler.getChildElemText(ElemsPaths.LETTERS, mail));
+        mailObj.setCountLetters(handler.getChildElemText(LETTERS, mail));
         return mailObj;
     }
 
     @Step("Letter sending")
     private void sendLetter() {
         try {
-            handler.click(handler.getElem(ElemsPaths.SEND_BUTTON));
+            handler.click(handler.getElem(SEND_BUTTON));
             System.out.println("Письмо отправлено");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -42,7 +51,7 @@ public class AutoQAMailPage {
     @Step("Print letter body")
     private void setLetterBody(String s) {
         try {
-            handler.setTextToElement(ElemsPaths.LETTER_BODY, s);
+            handler.setTextToElement(LETTER_BODY, s);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -51,7 +60,7 @@ public class AutoQAMailPage {
     @Step("Enter theme")
     private void setTheme(String theme) {
         try {
-            handler.setTextToElement(ElemsPaths.THEME_FIELD, theme);
+            handler.setTextToElement(THEME_FIELD, theme);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -60,7 +69,7 @@ public class AutoQAMailPage {
     @Step("Enter adress")
     private void setAdress(String adress) {
         try {
-            handler.setTextToElement(ElemsPaths.ADRESS_FIELD, adress);
+            handler.setTextToElement(ADRESS_FIELD, adress);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -69,7 +78,7 @@ public class AutoQAMailPage {
     @Step("Press New letter button")
     private void createNewLetter() {
         try {
-            handler.click(handler.getElem(ElemsPaths.NEW_LETTER));
+            handler.click(handler.getElem(NEW_LETTER));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

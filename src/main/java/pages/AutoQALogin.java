@@ -4,9 +4,11 @@ import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.testng.annotations.Parameters;
-import scraper.ElemsPaths;
 
 public class AutoQALogin {
+
+    public static final String LOGIN_FIELD = "//*[@id='identifierId']";
+    public static final String PASSWORD_FIELD = "//*[@id='password']/div[1]/div/div[1]/input";
 
     private SeleniumHandler handler;
 
@@ -17,7 +19,7 @@ public class AutoQALogin {
     @Step("Enter login")
     private void setLogin(String login) {
         try {
-            handler.setTextToElement(ElemsPaths.LOGIN_FIELD, login + Keys.ENTER);
+            handler.setTextToElement(LOGIN_FIELD, login + Keys.ENTER);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -26,7 +28,7 @@ public class AutoQALogin {
     @Step("Enter password")
     private void setPassword(String password) {
         try {
-            handler.setTextToElement(ElemsPaths.PASSWORD_FIELD, password + Keys.ENTER);
+            handler.setTextToElement(PASSWORD_FIELD, password + Keys.ENTER);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

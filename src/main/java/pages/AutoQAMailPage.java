@@ -3,20 +3,19 @@ package pages;
 import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import model.Mail;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Parameters;
 
 public class AutoQAMailPage {
 
-    public static final String INCOMING_LETTERS = "//*[@data-tooltip='Входящие']";
-    public static final String LETTERS = "//*[@class='bsU']";//т.к. мы находим дочерний элемент из блока входящих, то можно искать по классу
+    private static final String INCOMING_LETTERS = "//*[@class='TK']/div[@class='aim ain']";
+    private static final String LETTERS = "//*[@class='bsU']";//т.к. мы находим дочерний элемент из блока входящих, то можно искать по классу
 
-    public static final String NEW_LETTER = "//*[@class='aic']/div/div";
+    private static final String NEW_LETTER = "//*[@class='aic']/div/div";
 
-    public static final String ADRESS_FIELD = "//*[@name='to']";
-    public static final String THEME_FIELD = "//*[@name='subjectbox']";
-    public static final String LETTER_BODY = "//*[@class='Ar Au']/div[@aria-label='Тело письма']";
-    public static final String SEND_BUTTON = "//*[@class='dC']/div";
+    private static final String ADRESS_FIELD = "//*[@name='to']";
+    private static final String THEME_FIELD = "//*[@name='subjectbox']";
+    private static final String LETTER_BODY = "//*[@class='Ar Au']/div[@aria-label='Тело письма']";
+    private static final String SEND_BUTTON = "//*[@class='dC']/div";
 
     private SeleniumHandler handler;
 
@@ -27,13 +26,12 @@ public class AutoQAMailPage {
     @Parameters({"result"})
     @Step("Count incoming letters")
     public String getResultFromIncomingLetters() {
-        WebElement mail = handler.getElem(INCOMING_LETTERS);
-        Mail result = getElementIncomingLetters(mail);
+        Mail result = getElementIncomingLetters(INCOMING_LETTERS);
         System.out.println(result.toString());
         return result.toString();
     }
 
-    private Mail getElementIncomingLetters(WebElement mail) {
+    private Mail getElementIncomingLetters(String mail) {
         Mail mailObj = new Mail();
         mailObj.setCountLetters(handler.getChildElemText(LETTERS, mail));
         return mailObj;
@@ -49,14 +47,16 @@ public class AutoQAMailPage {
         handler.setTextToElement(LETTER_BODY, s);
     }
 
+    @Parameters({"theme"})
     @Step("Enter theme")
     private void setTheme(String theme) {
         handler.setTextToElement(THEME_FIELD, theme);
     }
 
-    @Step("Enter adress")
-    private void setAdress(String adress) {
-        handler.setTextToElement(ADRESS_FIELD, adress);
+    @Parameters({"addres"})
+    @Step("Enter addres")
+    private void setAddres(String addres) {
+        handler.setTextToElement(ADRESS_FIELD, addres);
     }
 
     @Step("Press New letter button")
@@ -64,10 +64,10 @@ public class AutoQAMailPage {
         handler.click(handler.getElem(NEW_LETTER));
     }
 
-    public void createAndSendQALetter(String adress, String theme) {
+    public void createALetter(String adress, String theme) {
         String letterBody = getResultFromIncomingLetters();
         createNewLetter();
-        setAdress(adress);
+        setAddres(adress);
         setTheme(theme);
         setLetterBody(letterBody);
         sendLetter();

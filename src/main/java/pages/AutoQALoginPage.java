@@ -7,8 +7,8 @@ import org.testng.annotations.Parameters;
 
 public class AutoQALoginPage {
 
-    public static final String LOGIN_FIELD = "//*[@id='identifierId']";
-    public static final String PASSWORD_FIELD = "//*[@id='password']/div[1]/div/div[1]/input";
+    private static final String LOGIN_FIELD = "//*[@id='identifierId']";
+    private static final String PASSWORD_FIELD = "//*[@id='password']/div[1]/div/div[1]/input";
 
     private SeleniumHandler handler;
 

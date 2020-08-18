@@ -3,7 +3,6 @@ package pages;
 import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
-import org.testng.annotations.Parameters;
 
 public class AutoQALoginPage {
 
@@ -16,19 +15,16 @@ public class AutoQALoginPage {
         this.handler = handler;
     }
 
-    @Parameters({"login"})
-    @Step("Enter login")
+    @Step("Enter login {0}")
     private void setLogin(String login) {
         handler.setTextToElement(LOGIN_FIELD, login + Keys.ENTER);
     }
 
-    @Parameters({"password"})
-    @Step("Enter password")
+    @Step("Enter password {0}")
     private void setPassword(String password) {
         handler.setTextToElement(PASSWORD_FIELD, password + Keys.ENTER);
     }
 
-    @Parameters({"url"})
     @Step("Get start")
     public void loginToAutoQA(String login, String password) {
         this.setLogin(login);

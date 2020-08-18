@@ -4,7 +4,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.Setter;
-import org.testng.annotations.Parameters;
 
 @Getter
 @Setter
@@ -12,9 +11,8 @@ public class Mail {
 
     private int countLetters;
 
-    @Step
+    @Step("Enter count of letters {0}")
     @Description("Set count of letters")
-    @Parameters("countOfLetters")
     public void setCountLetters(String countOfLetters) {
         try {
             countLetters = Integer.parseInt(countOfLetters);

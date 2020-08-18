@@ -3,7 +3,6 @@ package pages;
 import config.SeleniumHandler;
 import io.qameta.allure.Step;
 import model.Mail;
-import org.testng.annotations.Parameters;
 
 public class AutoQAMailPage {
 
@@ -23,7 +22,6 @@ public class AutoQAMailPage {
         this.handler = handler;
     }
 
-    @Parameters({"result"})
     @Step("Count incoming letters")
     public String getResultFromIncomingLetters() {
         Mail result = getElementIncomingLetters(INCOMING_LETTERS);
@@ -42,19 +40,17 @@ public class AutoQAMailPage {
         handler.click(handler.getElem(SEND_BUTTON));
     }
 
-    @Step("Print letter body")
+    @Step("Print letter body {0}")
     private void setLetterBody(String s) {
         handler.setTextToElement(LETTER_BODY, s);
     }
 
-    @Parameters({"theme"})
-    @Step("Enter theme")
+    @Step("Enter theme {0}")
     private void setTheme(String theme) {
         handler.setTextToElement(THEME_FIELD, theme);
     }
 
-    @Parameters({"addres"})
-    @Step("Enter addres")
+    @Step("Enter addres {0}")
     private void setAddres(String addres) {
         handler.setTextToElement(ADRESS_FIELD, addres);
     }

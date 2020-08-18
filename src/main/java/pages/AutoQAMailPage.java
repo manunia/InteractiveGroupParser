@@ -7,7 +7,7 @@ import model.Mail;
 public class AutoQAMailPage {
 
     private static final String INCOMING_LETTERS = "//*[@class='TK']/div[@class='aim ain']";
-    private static final String LETTERS = "//*[@class='bsU']";//т.к. мы находим дочерний элемент из блока входящих, то можно искать по классу
+    private static final String LETTERS = ".//*[@class='bsU']";//т.к. мы находим дочерний элемент из блока входящих, то можно искать по классу
 
     private static final String NEW_LETTER = "//*[@class='aic']/div/div";
 

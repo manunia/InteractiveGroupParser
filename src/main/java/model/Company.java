@@ -13,6 +13,13 @@ public class Company {
     private String date;
     private String adress;
 
+    private String description;
+
+    @Step("Company: {0}")
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "Company{" +

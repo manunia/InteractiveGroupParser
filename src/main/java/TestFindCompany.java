@@ -33,7 +33,7 @@ public class TestFindCompany {
     @Description("Find companies")
     @Test
     private void findCompanies() {
-        rusProfilePage.findAllCompanies(1);
+        rusProfilePage.findAllCompanies(26);
     }
 
     @Description("List of companies")

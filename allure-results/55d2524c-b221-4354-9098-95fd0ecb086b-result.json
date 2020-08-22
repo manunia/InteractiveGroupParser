@@ -1,0 +1,101 @@
+{
+  "name": "findCompanies",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "description": "Find companies",
+  "steps": [
+    {
+      "name": "Get start",
+      "status": "passed",
+      "stage": "finished",
+      "steps": [
+        {
+          "name": "Find okved list",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [],
+          "start": 1598121406896,
+          "stop": 1598121409464
+        },
+        {
+          "name": "Find okved code 26",
+          "status": "passed",
+          "stage": "finished",
+          "steps": [],
+          "attachments": [],
+          "parameters": [
+            {
+              "name": "code",
+              "value": "26"
+            }
+          ],
+          "start": 1598121409467,
+          "stop": 1598121412776
+        }
+      ],
+      "attachments": [],
+      "parameters": [
+        {
+          "name": "code",
+          "value": "26"
+        }
+      ],
+      "start": 1598121406891,
+      "stop": 1598121412777
+    }
+  ],
+  "attachments": [],
+  "parameters": [
+    {
+      "name": "appURL",
+      "value": "https://www.rusprofile.ru/"
+    }
+  ],
+  "start": 1598121406576,
+  "stop": 1598121412781,
+  "uuid": "55d2524c-b221-4354-9098-95fd0ecb086b",
+  "historyId": "fe52cabeb0e718e4cd31312712f4415a",
+  "fullName": "TestFindCompany.findCompanies",
+  "labels": [
+    {
+      "name": "package",
+      "value": "TestFindCompany"
+    },
+    {
+      "name": "testClass",
+      "value": "TestFindCompany"
+    },
+    {
+      "name": "testMethod",
+      "value": "findCompanies"
+    },
+    {
+      "name": "parentSuite",
+      "value": "Test Suite"
+    },
+    {
+      "name": "suite",
+      "value": "User Tests"
+    },
+    {
+      "name": "subSuite",
+      "value": "TestFindCompany"
+    },
+    {
+      "name": "host",
+      "value": "MahaPC"
+    },
+    {
+      "name": "thread",
+      "value": "5432@MahaPC.main(1)"
+    }
+  ],
+  "links": []
+}

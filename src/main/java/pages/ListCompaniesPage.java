@@ -27,6 +27,9 @@ public class ListCompaniesPage {
         List<WebElement> elements = handler.getElements(ALL_COMPANIES);
         for (WebElement e:elements) {
             if (e.getText().contains("Ростов-на-Дону") || e.getText().contains("Ростовская")) {
+                Company newCompany = new Company();
+                newCompany.setDescription(e.getText());
+                companyList.add(newCompany);
                 System.out.println(e.getText());
             }
         }

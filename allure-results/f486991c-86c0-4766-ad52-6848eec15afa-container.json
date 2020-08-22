@@ -1,0 +1,37 @@
+{
+  "uuid": "f486991c-86c0-4766-ad52-6848eec15afa",
+  "name": "User Tests",
+  "children": [
+    "55d2524c-b221-4354-9098-95fd0ecb086b",
+    "d7840e15-ff9f-431d-ba7d-507f9a5d0f93"
+  ],
+  "befores": [
+    {
+      "name": "initialization",
+      "status": "passed",
+      "stage": "finished",
+      "description": "Open browser",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1598121392613,
+      "stop": 1598121406018
+    }
+  ],
+  "afters": [
+    {
+      "name": "stop",
+      "status": "passed",
+      "stage": "finished",
+      "description": "Close browser",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1598121434362,
+      "stop": 1598121434363
+    }
+  ],
+  "links": [],
+  "start": 1598121392532,
+  "stop": 1598121434404
+}

@@ -1,5 +1,7 @@
 package model;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +11,11 @@ public class Mail {
 
     private int countLetters;
 
-    public void setCountLetters(String childElemText) {
+    @Step("Enter count of letters {0}")
+    @Description("Set count of letters")
+    public void setCountLetters(String countOfLetters) {
         try {
-            countLetters = Integer.parseInt(childElemText);
+            countLetters = Integer.parseInt(countOfLetters);
         } catch (Exception e) {
             System.out.println("Error parsing count of letters " + e.getMessage());
         }

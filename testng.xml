@@ -2,10 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Test Suite" verbose="2">
 
-    <parameter name="appURL" value="https://www.gmail.com/" />
+    <parameter name="appURL" value="https://www.rusprofile.ru/" />
     <test name="User Tests">
         <classes>
-            <class name="TestLoginAndSendLetter" />
+            <class name="TestFindCompany" />
 
         </classes>
     </test>

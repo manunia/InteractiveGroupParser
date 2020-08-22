@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumHandler {
@@ -52,6 +53,10 @@ public class SeleniumHandler {
 
     public WebElement getElem(String xpath) {
         return driver.findElement(By.xpath(xpath));
+    }
+
+    public List<WebElement> getElements(String xpath) {
+        return driver.findElements(By.xpath(xpath));
     }
 
     public WebElement getChildElem(String xpath, String parentElement) {
